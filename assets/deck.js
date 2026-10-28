@@ -74,6 +74,7 @@ class MiniLogic {
       childrenOnly: true,
       getNodeKey: n => (n.getAttribute && (n.getAttribute('data-key') || n.id)) || undefined,
       onBeforeElUpdated: (from, to) => {
+        if (from.id === 'glbg') return false;
         if (from.isEqualNode(to)) return false;
         const keep = from.classList && (from.classList.contains('px') || from.classList.contains('wipe') || (from.parentElement && from.parentElement.classList.contains('word-mask')));
         if (keep && from.getAttribute('style')) to.setAttribute('style', from.getAttribute('style'));
