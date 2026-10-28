@@ -1,0 +1,150 @@
+
+/* =====================================================================
+   FRONTERA LAYER · motion, components, atmosphere
+   (appended after the brand system; every effect has a CSS fallback)
+   ===================================================================== */
+@property --bg { syntax:'<color>'; inherits:true; initial-value:#FFF8F4; }
+@property --bg2 { syntax:'<color>'; inherits:true; initial-value:#FBEEE7; }
+.stage{ transition:--bg .9s var(--ease), --bg2 .9s var(--ease), background-color .9s var(--ease); background-color:var(--bg); }
+.stage.has-cursor, .stage.has-cursor button, .stage.has-cursor .pt, .stage.has-cursor .rg, .stage.has-cursor .hc{cursor:none;}
+#glbg{opacity:1;}
+.th-blush #glbg, .stage:not(.th-red):not(.th-deep):not(.th-night) #glbg{opacity:.9;}
+
+/* ---------- Curtain transition (3 staggered panels, GSAP-driven) ---------- */
+.curtain{position:absolute; inset:0; z-index:9; pointer-events:none; display:flex;}
+.curtain .cp{flex:1 1 0; transform:scaleY(0); transform-origin:top center; background:#EC0000; opacity:0; will-change:transform;}
+.wipe{display:none;}
+
+/* ---------- Text reveals (clip-path, CSS-guaranteed) ---------- */
+@keyframes clipUp{ from{clip-path:inset(0 0 100% 0); transform:translateY(14px);} to{clip-path:inset(-12% 0 -12% 0); transform:translateY(0);} }
+@keyframes scriptWipe{ from{clip-path:inset(-25% 100% -25% -2%); opacity:.6;} to{clip-path:inset(-25% -6% -25% -2%); opacity:1;} }
+@keyframes numIn{ from{opacity:0; filter:blur(8px); transform:translateY(10px) scale(.96);} to{opacity:1; filter:blur(0); transform:none;} }
+@keyframes landIn{ from{opacity:0; transform:scale(2.6);} 70%{opacity:1; transform:scale(.92);} to{opacity:1; transform:scale(1);} }
+@keyframes flipIn{ from{opacity:0; transform:perspective(900px) rotateY(-62deg) translateX(-24px);} to{opacity:1; transform:perspective(900px) rotateY(0) translateX(0);} }
+@keyframes cellIn{ from{opacity:0; transform:scale(.4);} to{opacity:1; transform:scale(1);} }
+@keyframes arcIn{ from{stroke-dasharray:0 var(--C);} }
+@keyframes mapIn{ from{opacity:0;} to{opacity:1;} }
+@keyframes floatY{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
+.h2, .lead{ animation:clipUp 820ms var(--ease) both; }
+.h2.fade-el, .lead.fade-el{ animation:clipUp 820ms var(--ease) both; }
+.q-script, .q-script.fade-el{ animation:scriptWipe 980ms cubic-bezier(.5,0,.2,1) both; }
+.kpi-value, .stat-pill-value, .hero-figure, .shock-num{ animation:numIn 900ms var(--ease) both; }
+.pt circle.dot{ transform-box:fill-box; transform-origin:center; animation:landIn 700ms var(--ease) both; }
+.reco{ animation:flipIn 900ms var(--ease) both; transform-style:preserve-3d; will-change:transform; }
+.tilt{ will-change:transform; transform-style:preserve-3d; }
+.kpi.tilt:hover{ box-shadow:0 24px 50px rgba(120,40,20,0.18); }
+.kpi.hot.tilt:hover{ box-shadow:0 24px 50px rgba(236,0,0,0.32); }
+
+/* ---------- Build steps: callouts veiled until "Revelar" ---------- */
+.callout{ transition:opacity .6s var(--ease), transform .7s var(--ease), filter .6s; }
+.callout.veiled{ opacity:0; transform:translateY(18px) scale(.98); filter:blur(6px); pointer-events:none; }
+.nav-btn.primary.reveal{ background:var(--black); color:#fff; }
+.th-night .nav-btn.primary.reveal, .th-deep .nav-btn.primary.reveal, .th-red .nav-btn.primary.reveal{ background:#fff; color:#1A1A1A; }
+.nav-btn.icon{ width:46px; padding:0; justify-content:center; }
+.nav-left{ display:flex; gap:8px; align-items:center; }
+
+/* ---------- KPI sparklines ---------- */
+.kpi{ min-height:156px; padding-bottom:10px; }
+.spark{ width:100%; height:30px; display:block; margin-top:8px; overflow:visible; }
+.spark .sl{ fill:none; stroke:var(--accent); stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:100; animation:drawLine 1500ms var(--ease) both; --len:100; }
+.spark .sa{ fill:var(--accent); opacity:.1; }
+.spark .sd{ fill:var(--accent); }
+.kpi.hot .spark .sl{ stroke:#fff; } .kpi.hot .spark .sa{ fill:#fff; opacity:.16; } .kpi.hot .spark .sd{ fill:#fff; }
+.kpi-trend{ font:600 10.5px/1 var(--font-head); color:var(--muted); margin-top:5px; letter-spacing:.04em; text-transform:uppercase; }
+.kpi.hot .kpi-trend{ color:rgba(255,255,255,.8); }
+
+/* ---------- Donut funnel ---------- */
+.donut-wrap{ display:flex; gap:20px; align-items:center; }
+.donut{ width:250px; height:250px; flex:none; overflow:visible; }
+.donut .arc{ fill:none; transition:opacity .3s, stroke-width .3s; animation:arcIn 1200ms var(--ease) both; cursor:pointer; }
+.donut .arc.dim{ opacity:.22; }
+.donut .arc.lit{ stroke-width:34; }
+.donut .dc-big{ font:400 36px var(--font-cond); fill:var(--ink); }
+.donut .dc-sm{ font:700 8.5px var(--font-head); fill:var(--muted); letter-spacing:.05em; text-transform:uppercase; }
+.legend-chip.fh{ cursor:pointer; transition:background .25s, transform .25s var(--ease); }
+.legend-chip.fh.lit{ background:var(--pill-bg); color:var(--pill-ink); transform:translateX(3px); }
+.legend.vert{ flex-direction:column; gap:7px; margin:0; }
+.legend.vert .legend-chip{ white-space:nowrap; }
+
+/* ---------- FLIP bar rows ---------- */
+.bar-row{ will-change:transform; }
+.bar-fill{ transition:width .7s var(--ease), filter .2s; }
+
+/* ---------- Chile choropleth ---------- */
+.map{ width:100%; max-height:168px; display:block; overflow:visible; }
+.map .rg{ stroke:var(--bg); stroke-width:1.4; cursor:pointer; transition:filter .25s, stroke-width .25s, stroke .25s; animation:mapIn 600ms var(--ease) both; }
+.map .rg:hover{ filter:brightness(1.12) saturate(1.1); }
+.map .rg.sel{ stroke:var(--ink); stroke-width:2.6; filter:brightness(1.05); }
+.map .pin{ pointer-events:none; }
+.map .pin circle{ transform-box:fill-box; transform-origin:center; }
+.map .pin .ring{ animation:pulseMap 1.8s ease-out infinite; }
+@keyframes pulseMap{ 0%{r:6; opacity:.9;} 100%{r:22; opacity:0;} }
+.map-scale{ display:flex; align-items:center; gap:8px; font:600 10.5px/1 var(--font-head); color:var(--muted); margin-top:4px; }
+.map-scale .ramp{ flex:0 0 140px; height:8px; border-radius:100px; background:linear-gradient(90deg,#F2BFA3,#E8735F,#EC0000,#6A0000); }
+.reg-grid{ display:grid; grid-template-columns:1fr 1fr; gap:4px 24px; }
+.reg-row{ display:grid; grid-template-columns:118px 1fr 92px; align-items:center; gap:10px; padding:2px 8px; margin:0 -8px; border-radius:10px; cursor:pointer; transition:background .25s; }
+.reg-row:hover, .reg-row.sel{ background:var(--pill-bg-2); }
+.reg-row .bar-track{ height:10px; }
+.reg-row .bar-name{ font-size:12px; } .reg-row .bar-meta{ font-size:11px; }
+.reg-detail{ display:flex; flex-direction:column; gap:6px; padding:14px 18px; }
+.reg-detail .name{ font:800 24px/1 var(--font-head); letter-spacing:-.03em; color:var(--ink); }
+.reg-detail .grid{ display:grid; grid-template-columns:1fr 1fr; gap:6px 16px; }
+.reg-detail .v{ font:800 17px/1.1 var(--font-head); color:var(--ink); margin-top:2px; }
+.reg-detail .v.acc{ color:var(--accent); }
+.gauge{ position:relative; height:10px; border-radius:100px; background:var(--track); overflow:visible; margin-top:6px; }
+.gauge .gf{ height:100%; border-radius:100px; background:linear-gradient(90deg,#F2BFA3,#EC0000); transition:width .6s var(--ease); }
+.gauge .gm{ position:absolute; top:-4px; width:2px; height:18px; background:var(--ink); border-radius:2px; }
+.gauge-l{ display:flex; justify-content:space-between; font:600 10px/1 var(--font-head); color:var(--muted); margin-top:4px; }
+table.dtable.compact td{ padding:6px 8px 6px 0; font-size:12.5px; }
+table.dtable.compact th{ padding-bottom:7px; }
+
+/* ---------- Cohort heatmap ---------- */
+.heat{ display:grid; grid-template-columns:118px repeat(22, minmax(0,1fr)); gap:3px; align-items:stretch; }
+.heat .hl-row{ font:700 12px/1 var(--font-head); color:var(--ink); display:flex; align-items:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding-right:8px; }
+.hc{ position:relative; height:24px; border-radius:6px; animation:cellIn 500ms var(--ease) both; transition:transform .2s var(--ease), filter .2s; cursor:default; }
+.hc:hover{ transform:scale(1.18); filter:brightness(1.08); z-index:3; }
+.hc .tip{ position:absolute; bottom:calc(100% + 6px); left:50%; transform:translateX(-50%) translateY(4px); background:var(--ink); color:var(--bg); font:700 11px/1 var(--font-head); padding:7px 9px; border-radius:100px; white-space:nowrap; opacity:0; pointer-events:none; transition:opacity .2s, transform .25s var(--ease); z-index:5; }
+.hc:hover .tip{ opacity:1; transform:translateX(-50%) translateY(0); }
+.hc.empty{ background:repeating-linear-gradient(45deg, var(--track) 0 4px, transparent 4px 8px); }
+.heat .tick{ font:600 9.5px var(--font-head); color:var(--muted); text-align:center; }
+
+/* ---------- Custom cursor + magnetic buttons ---------- */
+.cursor, .cursor-ring{ position:absolute; top:0; left:0; z-index:40; pointer-events:none; border-radius:50%; opacity:0; }
+.cursor{ width:10px; height:10px; margin:-5px 0 0 -5px; background:var(--accent); }
+.cursor-ring{ width:38px; height:38px; margin:-19px 0 0 -19px; border:1.5px solid var(--ink); opacity:0; transition:width .25s var(--ease), height .25s var(--ease), margin .25s var(--ease), border-color .3s, background .3s; }
+.has-cursor .cursor, .has-cursor .cursor-ring{ opacity:1; }
+.has-cursor.cur-hot .cursor-ring{ width:56px; height:56px; margin:-28px 0 0 -28px; background:rgba(236,0,0,.10); border-color:var(--accent); }
+.th-red.has-cursor.cur-hot .cursor-ring, .th-deep.has-cursor.cur-hot .cursor-ring{ background:rgba(255,255,255,.14); border-color:#fff; }
+.th-red .cursor, .th-deep .cursor, .th-night .cursor{ background:#fff; }
+.th-red .cursor-ring, .th-deep .cursor-ring, .th-night .cursor-ring{ border-color:rgba(255,255,255,.85); }
+.nav-btn, .start-pill, .seg, .dot{ will-change:transform; }
+
+/* ---------- Intro overlay (hidden unless the component turns it on) ---------- */
+.intro{ position:absolute; inset:0; z-index:30; background:#EC0000; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; will-change:transform; }
+.intro .iq-wrap{ display:flex; flex-direction:column; align-items:center; gap:2px; }
+.intro .iq-mask{ overflow:hidden; line-height:1.15; padding:0 .2em; }
+.intro .iq{ display:block; font:400 30px/1.15 var(--font-script); text-transform:uppercase; letter-spacing:.01em; color:#fff; transform:translateY(110%); white-space:nowrap; }
+.intro .iq:nth-child(odd){ color:#F6DCC9; }
+.intro .ibig-wrap{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; opacity:0; }
+.intro .ibig{ font:400 clamp(90px, 12vw, 170px)/.9 var(--font-cond); letter-spacing:.01em; color:#fff; font-variant-numeric:tabular-nums; }
+.intro .ibig-l{ font:600 13px/1 var(--font-head); letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.8); margin-top:18px; }
+.intro .istripe{ position:absolute; left:0; right:0; height:1px; background:rgba(255,255,255,.25); transform:scaleX(0); }
+
+/* ---------- Closing cards: hover tilt handled by JS; depth cue ---------- */
+.reco{ box-shadow:0 10px 30px rgba(0,0,0,.18); transition:box-shadow .3s; }
+.reco:hover{ box-shadow:0 26px 50px rgba(0,0,0,.32); }
+.reco-wrap{ perspective:1100px; display:flex; flex-direction:column; gap:14px; }
+
+/* ---------- Fill the stage: lists spread over the available height ---------- */
+.row[style*="flex:1"] > .col{ display:flex; flex-direction:column; }
+.row[style*="flex:1"] > .col > .bar-list{ flex:1 1 auto; justify-content:space-evenly; }
+.row[style*="flex:1"] > .col > .bar-list > .bar-row{ padding:7px 8px; }
+.row[style*="flex:1"] > .col > .bar-list > .ccard{ padding:12px 14px; }
+
+/* small-screen guards */
+@media (max-width: 900px){
+  .heat{ grid-template-columns:70px repeat(22, minmax(0,1fr)); }
+  .reg-grid{ grid-template-columns:1fr; }
+  .donut-wrap{ flex-direction:column; }
+  .cursor, .cursor-ring{ display:none; }
+}
