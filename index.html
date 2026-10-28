@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartera Hipotecaria 2025–2026 — Lectura Ejecutiva</title>
+<meta name="description" content="Web slider deck · caso académico de analítica y data storytelling sobre una cartera hipotecaria sintética 2025–2026.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Anton&family=Permanent+Marker&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/morphdom@2.7.4/dist/morphdom-umd.min.js"></script>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+<div id="app"></div>
+<script type="text/template" id="tpl">
+<div class="stage {{themeClass}}" onWheel="{{wheelFn}}" onMouseMove="{{moveFn}}">
+  <canvas id="glbg"></canvas>
+  <div class="noise"></div>
+  <div class="kicker"><span class="d"></span> Caso académico <span style="opacity:.6;">·</span> Cartera hipotecaria 2025–2026</div>
+  <div class="counter"><b>{{iStr}}</b> / {{totalStr}}</div>
+  <div class="progress-rail"><div class="progress-fill" style="width:{{progressPct}}%"></div></div>
+
+  <!-- ============ 0 · PORTADA (rojo) ============ -->
+  <sc-if value="{{s0}}" hint-placeholder-val="{{true}}">
+  <section class="slide" data-key="s0">
+    <div class="big-script">Empieza aquí</div>
+    <div class="slide-body" style="justify-content:flex-start; gap:0;">
+      <div class="q-script sm fade-el" style="animation-delay:40ms; margin-bottom:4px;">Lo que la cartera nos cuenta</div>
+      <h1 class="h1 px" style="max-width:900px;">
+        <sc-for list="{{heroWords}}" as="w" hint-placeholder-count="2"><span class="word-mask"><span>{{w.text}}</span></span> </sc-for>
+        <span class="thin"><span class="word-mask"><span>2025–2026</span></span></span>
+      </h1>
+      <p class="lead fade-el" style="animation-delay:220ms; margin-top:14px; font-size:16.5px; max-width:720px; color:rgba(255,255,255,0.88);">Una lectura de extremo a extremo de la originación hipotecaria: de dónde viene el volumen, qué tan rentable y sano es, y dónde están los focos de riesgo y oportunidad.</p>
+      <div class="hero-figure fade-el" style="animation-delay:320ms; margin-top:14px;">{{heroVal}}<span class="unit">UF originadas en 22 meses</span></div>
+      <div class="hero-sub fade-el" style="animation-delay:420ms;"><b>{{kpiOps}}</b> operaciones cursadas · <b>{{kpiSegCount}}</b> segmentos · <b>{{kpiRegCount}}</b> regiones · <b>{{kpiCanalCount}}</b> canales de captación</div>
+      <div class="fade-el" style="animation-delay:520ms; margin-top:18px;">
+        <button class="start-pill" onClick="{{goNextFn}}">Empezamos aquí <span class="arrow"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-chip pop-el" style="animation-delay:380ms;"><div class="v">{{kpiMoraStr}}%</div><div class="l">Mora 30+ de la cartera</div></div>
+      <div class="hero-chip pop-el" style="animation-delay:460ms;"><div class="v">{{kpiTasaStr}}%</div><div class="l">Tasa anual promedio</div></div>
+      <div class="hero-chip pop-el" style="animation-delay:540ms;"><div class="v">{{kpiNpsStr}}%</div><div class="l">NPS promotores</div></div>
+    </div>
+    <div class="source-note fade-el" style="animation-delay:620ms; color:rgba(255,255,255,0.7);">Caso académico — datos sintéticos para ejercicios de analítica y storytelling. No representa cifras oficiales de Banco Santander ni debe usarse para decisiones financieras reales. Montos en UF.</div>
+  </section>
+  </sc-if>
+
+  <!-- ============ 1 · RESUMEN EN NÚMEROS ============ -->
+  <sc-if value="{{s1}}" hint-placeholder-val="{{false}}">
+  <section class="slide" data-key="s1">
+    <div class="slide-head px">
+      <div class="kicker-mini fade-el">Resumen ejecutivo</div>
+      <h2 class="h2 fade-el" style="animation-delay:60ms;">La cartera en <span class="hl">diez números</span></h2>
+      <p class="lead fade-el" style="animation-delay:120ms;">Fotografía completa de la originación 2025–2026: tamaño, precio, riesgo y rentabilidad. Pasa el cursor por cada indicador.</p>
+    </div>
+    <div class="kpi-grid">
+      <sc-for list="{{kpiTiles}}" as="k" hint-placeholder-count="10">
+        <div class="kpi pop-el{{k.hotSuffix}}" style="animation-delay:{{k.delay}}ms;">
+          <div class="kpi-label">{{k.label}}</div>
+          <div><span class="kpi-value">{{k.value}}</span><span class="kpi-unit">{{k.unit}}</span></div>
+          <div class="kpi-sub">{{k.sub}}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div class="source-note fade-el" style="animation-delay:620ms;">Fuente: Operaciones cursadas, cartera 2025–2026 (1.850 créditos). NPS promotores = % de clientes con nota 9–10 (escala 0–10).</div>
+  </section>
+  </sc-if>
+
+  <!-- ============ 2 · EMBUDO ============ -->
+  <sc-if value="{{s2}}" hint-placeholder-val="{{false}}">
+  <section class="slide" data-key="s2">
+    <div class="slide-head px">
+      <div class="kicker-mini fade-el">Embudo comercial</div>
+      <h2 class="h2 fade-el" style="animation-delay:60ms;">De {{funnelTotal}} solicitudes a <span class="hl">{{funnelCursado}}</span> créditos cursados</h2>
+      <p class="lead fade-el" style="animation-delay:120ms;">Conversión global de <b>{{funnelConv}}%</b>. El resto se reparte entre rechazo, desistimiento y solicitudes que no avanzan.</p>
+    </div>
+    <div class="row" style="flex:1; align-items:flex-start;">
+      <div class="col" style="flex:1.3;">
+        <div class="panel-title"><span>Composición de las {{funnelTotal}} solicitudes</span></div>
+        <div class="legend">
+          <sc-for list="{{funnelLegend}}" as="f" hint-placeholder-count="5">
+            <div class="legend-chip"><span class="legend-swatch" style="background:{{f.color}}"></span>{{f.label}} · {{f.pctStr}}</div>
+          </sc-for>
+        </div>
+        <div class="funnel" style="height:58px;">
+          <sc-for list="{{funnelSegments}}" as="f" hint-placeholder-count="5">
+            <div class="fseg" style="background:{{f.color}}; width:{{f.pct}}%; animation-delay:{{f.delay}}ms;">
+              <sc-if value="{{f.showLabel}}" hint-placeholder-val="{{false}}"><span class="fl" style="color:{{f.ink}};">{{f.pctStr}}</span></sc-if>
+              <span class="tip">{{f.label}} · {{f.valueStr}} solicitudes</span>
+            </div>
+          </sc-for>
+        </div>
+        <div class="panel" style="margin-top:18px;">
+          <div class="panel-title">Motivos de rechazo o abandono<span class="tag">950 solicitudes no cursadas</span></div>
+          <div class="bar-list">
+            <sc-for list="{{motivoBars}}" as="m" hint-placeholder-count="8">
+              <div class="bar-row compact">
+                <div class="bar-name">{{m.label}}</div>
+                <div class="bar-track" style="height:14px;"><div class="bar-fill" style="width:{{m.pct}}%; background:var(--accent); animation-delay:{{m.delay}}ms;"></div></div>
+                <div class="bar-meta"><b>{{m.value}}</b> solicitudes</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="flex:0.8; display:flex; flex-direction:column; gap:16px;">
+        <div class="stat-pill pop-el" style="animation-delay:200ms;">
+          <div class="stat-pill-label">Días promedio hasta decisión</div>
+          <div class="stat-pill-value big">{{diasDecision}}</div>
+          <div class="stat-pill-sub">desde la solicitud hasta la resolución</div>
+        </div>
+        <div class="stat-pill pop-el" style="animation-delay:280ms;">
+          <div class="stat-pill-label">Costo de lead promedio</div>
+          <div class="stat-pill-value big">{{costoLead}} <span style="font:600 16px var(--font-head); color:var(--ink-2);">UF</span></div>
+          <div class="stat-pill-sub">por solicitud generada, todos los canales</div>
+        </div>
+        <div class="callout" style="margin-top:0;">
+          <div class="callout-label">Lectura</div>
+          <div class="callout-text">1 de cada 3 solicitudes <b>no llega a cursarse</b>. Documentación incompleta y demoras del proceso explican ~22% de los rechazos y abandonos — ambas son palancas internas, no de mercado.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- ============ 3 · P1 CANALES (con selector) ============ -->
+  <sc-if value="{{s3}}" hint-placeholder-val="{{false}}">
+  <section class="slide" data-key="s3">
+    <div class="slide-head px">
+      <div class="q-script fade-el">¿Qué canal origina más y a qué costo?</div>
+      <h2 class="h2 fade-el" style="animation-delay:80ms;">Sucursal lidera el volumen; <span class="hl">Referido</span> convierte con el menor costo.</h2>
+    </div>
+    <div class="row" style="flex:1;">
+      <div class="col" style="flex:1.35;">
+        <div class="panel-title" style="align-items:center;">
+          <span>Ranking de canales</span>
+          <span class="seg-ctl">
+            <button class="seg{{cmVolActive}}" onClick="{{setCmVol}}">Volumen</button>
+            <button class="seg{{cmOpsActive}}" onClick="{{setCmOps}}">Operaciones</button>
+            <button class="seg{{cmMoraActive}}" onClick="{{setCmMora}}">Mora 30+</button>
+          </span>
+        </div>
+        <div class="bar-list">
+          <sc-for list="{{canalBars}}" as="c" hint-placeholder-count="7">
+            <div class="bar-row">
+              <div class="bar-name">{{c.label}}</div>
+              <div class="bar-track"><div class="bar-fill" style="width:{{c.pct}}%; background:{{c.color}}; animation-delay:{{c.delay}}ms;"></div></div>
+              <div class="bar-meta"><b>{{c.valueStr}}</b> {{c.unit}}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div class="source-note">{{canalMetricNote}}</div>
+      </div>
+      <div class="col" style="flex:1; display:flex; flex-direction:column;">
+        <div class="panel-title">Conversión y CAC por canal<span class="tag">% solicitudes → cursado</span></div>
+        <div class="bar-list">
+          <sc-for list="{{canalConvBars}}" as="c" hint-placeholder-count="7">
+            <div class="bar-row compact">
+              <div class="bar-name">{{c.label}}</div>
+              <div class="bar-track"><div class="bar-fill" style="width:{{c.pct}}%; background:{{c.color}}; animation-delay:{{c.delay}}ms;"></div></div>
+              <div class="bar-meta"><b>{{c.pctStr}}</b> <span style="color:var(--muted);">· CAC {{c.cacStr}}</span></div>
+            </div>
+          </sc-for>
+        </div>
+        <div class="callout">
+          <div class="callout-label">Lectura</div>
+          <div class="callout-text">Referido: CAC más bajo (<b>11,9 UF</b>) y mejor mora relativa. Corredora inmobiliaria y Contact center concentran los costos más altos y la conversión más débil.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- ============ 4 · P2 SEGMENTOS + PARADOJA (rojo) ============ -->
+  <sc-if value="{{s4}}" hint-placeholder-val="{{false}}">
+  <section class="slide" data-key="s4">
+    <div class="slide-head px">
+      <div class="q-script fade-el">¿Dónde se concentra el monto?</div>
+      <h2 class="h2 fade-el" style="animation-delay:80ms;">En Personas y Select — y el score de riesgo <span class="hl">no predice la mora real</span>.</h2>
+    </div>
+    <div class="row" style="flex:1;">
+      <div class="col" style="flex:1.1; display:flex; flex-direction:column;">
+        <div class="panel-title">Volumen por segmento<span class="tag">% del total · mora 30+</span></div>
+        <div class="bar-list">
+          <sc-for list="{{segBars}}" as="s" hint-placeholder-count="5">
+            <div class="bar-row">
+              <div class="bar-name">{{s.label}}</div>
+              <div class="bar-track"><div class="bar-fill" style="width:{{s.pct}}%; background:{{s.color}}; animation-delay:{{s.delay}}ms;"></div></div>
+              <div class="bar-meta"><b>{{s.shareStr}}</b> <span style="color:var(--muted);">· mora {{s.moraStr}}</span></div>
+            </div>
+          </sc-for>
+        </div>
+        <div class="callout">
+          <div class="callout-label">Lectura</div>
+          <div class="callout-text">Personas y Select suman casi la mitad del volumen con la mora más baja (13,8% y 15,0%). <b>Universitario</b> y Private Banking exhiben la mora más alta del libro (18,3% y 18,1%) — foco natural de monitoreo.</div>
+        </div>
+      </div>
+      <div class="col" style="flex:0.9; display:flex; flex-direction:column;">
+        <div class="panel-title">Clasificación de riesgo vs. mora real<span class="tag">% mora 30+ observada</span></div>
+        <div class="bar-list">
+          <sc-for list="{{riskBars}}" as="r" hint-placeholder-count="3">
+            <div class="bar-row compact">
+              <div class="bar-name">{{r.label}}</div>
+              <div class="bar-track"><div class="bar-fill" style="width:{{r.pct}}%; background:{{r.color}}; animation-delay:{{r.delay}}ms;"></div></div>
+              <div class="bar-meta"><b>{{r.moraStr}}</b> mora</div>
+            </div>
+          </sc-for>
+        </div>
+        <div class="callout alt">
+          <div class="callout-label">Paradoja a resolver</div>
+          <div class="callout-text">Los créditos clasificados como <b>riesgo Alto</b> muestran la <b>menor</b> mora real (12,5%), por debajo de Bajo (16,9%) y Medio (17,5%). El score declarado no está discriminando bien: oportunidad de recalibración del modelo.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- ============ 5 · P3 EXPERIENCIA ============ -->
+  <sc-if value="{{s5}}" hint-placeholder-val="{{false}}">
+  <section class="slide" data-key="s5">
+    <div class="slide-head px">
+      <div class="q-script fade-el">¿Crecer nos costó experiencia?</div>
+      <h2 class="h2 fade-el" style="animation-delay:80ms;">No. El NPS es <span class="hl">prácticamente plano</span> entre canales — la digitalización no erosionó la satisfacción.</h2>
+    </div>
+    <div class="row" style="flex:1;">
+      <div class="col" style="flex:1.2;">
+        <div class="panel-title">NPS promotor (0–10) por canal de captación<span class="tag">rango {{npsMin}}–{{npsMax}}</span></div>
+        <div class="bar-list">
+          <sc-for list="{{npsBars}}" as="n" hint-placeholder-count="7">
+            <div class="bar-row">
+              <div class="bar-name">{{n.label}}</div>
+              <div class="bar-track"><div class="bar-fill" style="width:{{n.pct}}%; background:var(--accent); animation-delay:{{n.delay}}ms;"></div></div>
+              <div class="bar-meta"><b>{{n.valueStr}}</b> / 10</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div class="col" style="flex:0.8; display:flex; flex-direction:column; gap:16px;">
+        <div class="stat-pill pop-el" style="animation-delay:160ms;">
+          <div class="stat-pill-label">Satisfacción · Nuevo vs. Recurrente</div>
+          <div class="stat-pill-value big">4,52 <span style="font:600 15px var(--font-head); color:var(--ink-2);">/ 5 ambos</span></div>
+          <div class="stat-pill-sub">clientes nuevos 4,52 · recurrentes 4,51 — sin diferencia relevante</div>
+        </div>
+        <div class="stat-pill pop-el" style="animation-delay:240ms;">
+          <div class="stat-pill-label">NPS neto de la cartera</div>
+          <div class="stat-pill-value big">+{{npsNeto}}</div>
+          <div class="stat-pill-sub">{{npsProm}}% promotores menos detractores</div>
+        </div>
+        <div class="callout" style="margin-top:0;">
+          <div class="callout-label">Lectura</div>
+          <div class="callout-text">La experiencia es <b>transversal</b>: canal, región, segmento y tipo de cliente se mueven en un rango muy estrecho. El riesgo de la cartera se concentra en otra parte — no en la experiencia.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- ============ 6 · SERIE MENSUAL ============ -->
+  <sc-if value="{{s6}}" hint-placeholder-val="{{false}}">
+  <section class="slide" data-key="s6">
+    <div class="slide-head px">
+      <div class="kicker-mini fade-el">Serie mensual</div>
+      <h2 class="h2 fade-el" style="animation-delay:60ms;">Originación y mora, <span class="hl">mes a mes</span></h2>
+      <p class="lead fade-el" style="animation-delay:120ms; max-width:1000px;">El volumen cae con fuerza desde fines de 2025. La mora 30+ también baja hacia 2026 — pero por antigüedad de cartera (seasoning), no necesariamente por mejor calidad.</p>
+    </div>
+    <div class="col" style="flex:1; display:flex; flex-direction:column; gap:18px;">
+      <div class="panel" style="display:flex; flex-direction:column;">
+        <div class="panel-title">Volumen originado mensual<span class="tag">UF · ene 2025–oct 2026</span></div>
+        <div class="legend" style="margin-bottom:10px;">
+          <div class="legend-chip"><span class="legend-swatch" style="background:var(--sred);"></span>2025</div>
+          <div class="legend-chip"><span class="legend-swatch" style="background:var(--peach);"></span>2026</div>
+        </div>
+        <div class="short" style="height:120px; display:flex; align-items:flex-end; gap:4px;">
+          <sc-for list="{{monthCols}}" as="m" hint-placeholder-count="22">
+            <div class="colw">
+              <span class="tip">{{m.tipStr}}</span>
+              <div class="col-track"><div class="col-fill" style="height:{{m.pct}}%; background:{{m.color}}; animation-delay:{{m.delay}}ms;"></div></div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex; gap:4px; margin-top:6px;">
+          <sc-for list="{{monthCols}}" as="m" hint-placeholder-count="22">
+            <div style="flex:1; text-align:center;"><span style="font:600 9.5px var(--font-head); color:var(--muted);">{{m.tick}}</span></div>
+          </sc-for>
+        </div>
+      </div>
+      <div class="panel" style="height:112px; display:flex; flex-direction:column; padding-bottom:12px;">
+        <div class="panel-title">Mora 30+ mensual<span class="tag">% de operaciones del mes</span></div>
+        <svg viewBox="0 0 1000 70" preserveAspectRatio="none" style="flex:1; width:100%; overflow:visible;">
+          <line x1="0" y1="{{moraBaseY}}" x2="1000" y2="{{moraBaseY}}" stroke="var(--baseline)" stroke-width="1" stroke-dasharray="4 4"/>
+          <path d="{{moraAreaD}}" fill="var(--sred)" opacity="0.10"></path>
+          <path d="{{moraLineD}}" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" pathLength="1000" style="stroke-dasharray:1000; animation:drawLine 1600ms var(--ease) both; --len:1000;"></path>
+          <sc-for list="{{moraPoints}}" as="p" hint-placeholder-count="22">
+            <circle cx="{{p.x}}" cy="{{p.y}}" r="3.2" fill="var(--panel)" stroke="var(--sred)" stroke-width="2"></circle>
+          </sc-for>
+        </svg>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- ============ 7 · P4 GEOGRAFÍA ============ -->
+  <sc-if value="{{s7}}" hint-placeholder-val="{{false}}">
+  <section class="slide" data-key="s7">
+    <div class="slide-head px">
+      <div class="q-script fade-el">¿Dónde está el riesgo en el mapa?</div>
+      <h2 class="h2 fade-el" style="animation-delay:80ms;">RM concentra <span class="hl">29%</span> del volumen con mora bajo el promedio.</h2>
+    </div>
+    <div class="row" style="flex:1; align-items:stretch;">
+      <div class="col" style="flex:1.3; max-height:100%; overflow:hidden;">
+        <div class="panel-title">Las 16 regiones, ordenadas por volumen<span class="tag">UF · mora 30+</span></div>
+        <div class="bar-list" style="gap:6px;">
+          <sc-for list="{{regionBars}}" as="r" hint-placeholder-count="16">
+            <div class="bar-row compact" style="grid-template-columns:132px 1fr 150px; padding:2px 8px;">
+              <div class="bar-name" style="font-size:12px;">{{r.label}}</div>
+              <div class="bar-track" style="height:14px;"><div class="bar-fill" style="width:{{r.pct}}%; background:{{r.color}}; animation-delay:{{r.delay}}ms;"></div></div>
+              <div class="bar-meta" style="font-size:11px;"><b>{{r.valueStr}}</b> UF <span style="color:var(--muted);">· mora {{r.moraStr}}</span></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div class="col" style="flex:0.85; display:flex; flex-direction:column;">
+        <div class="panel">
+          <div class="panel-title">Tipo de vivienda<span class="tag">promedios de cartera</span></div>
+          <table class="dtable">
+            <thead><tr><th>Tipo</th><th>LTV</th><th>DTI</th><th>Tasa</th><th>Mora 30+</th></tr></thead>
+            <tbody>
+              <sc-for list="{{tipoRows}}" as="t" hint-placeholder-count="4">
+                <tr><td>{{t.label}}</td><td>{{t.ltv}}</td><td>{{t.dti}}</td><td>{{t.tasa}}</td><td>{{t.mora}}</td></tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout">
+          <div class="callout-label">Lectura</div>
+          <div class="callout-text">Aysén y Magallanes son estadísticamente pequeñas (3–4 operaciones): su mora puntual no es representativa. El producto (casa/departamento, nuevo/usado) no mueve el riesgo de forma relevante.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- ============ 8 · P5 EJECUTIVOS (scatter interactivo) ============ -->
+  <sc-if value="{{s8}}" hint-placeholder-val="{{false}}">
+  <section class="slide" data-key="s8">
+    <div class="slide-head px">
+      <div class="q-script fade-el">¿Vender más significa vender peor?</div>
+      <h2 class="h2 fade-el" style="animation-delay:80ms;">No: los ejecutivos de mayor volumen también tienen <span class="hl">mora bajo el promedio</span>. Toca un punto para explorar.</h2>
+    </div>
+    <div class="row" style="flex:1;">
+      <div class="col" style="flex:1.3;">
+        <svg viewBox="0 0 560 360" style="width:100%; height:auto; max-height:400px; display:block;">
+          <rect x="{{execMedX}}" y="{{execMedY}}" width="{{execQuadW}}" height="{{execQuadH}}" fill="var(--sred)" opacity="0.05" rx="10"></rect>
+          <line x1="40" y1="20" x2="40" y2="330" stroke="var(--grid)" stroke-width="1"/>
+          <line x1="40" y1="330" x2="540" y2="330" stroke="var(--grid)" stroke-width="1"/>
+          <line x1="{{execMedX}}" y1="20" x2="{{execMedX}}" y2="330" stroke="var(--baseline)" stroke-width="1" stroke-dasharray="3 5"/>
+          <line x1="40" y1="{{execMedY}}" x2="540" y2="{{execMedY}}" stroke="var(--baseline)" stroke-width="1" stroke-dasharray="3 5"/>
+          <text x="540" y="348" text-anchor="end" fill="var(--muted)" font-size="10.5" font-family="Outfit, sans-serif" font-weight="600">volumen originado →</text>
+          <text x="46" y="18" text-anchor="start" fill="var(--muted)" font-size="10.5" font-family="Outfit, sans-serif" font-weight="600">↑ mora 30+</text>
+          <text x="536" y="{{execMedYLabel}}" text-anchor="end" fill="var(--muted)" font-size="10" font-family="Outfit, sans-serif" font-weight="600">mora cartera 16,2%</text>
+          <sc-for list="{{execPoints}}" as="e" hint-placeholder-count="20">
+            <g class="pt{{e.selSuffix}}" onClick="{{e.sel}}">
+              <circle class="halo" cx="{{e.x}}" cy="{{e.y}}" r="{{e.rh}}" fill="none" stroke="{{e.color}}" stroke-width="2"></circle>
+              <circle cx="{{e.x}}" cy="{{e.y}}" r="{{e.r}}" fill="{{e.color}}" opacity="0.92" style="animation:ringIn 500ms var(--ease) both; animation-delay:{{e.delay}}ms;"></circle>
+              <text x="{{e.x}}" y="{{e.ly}}" text-anchor="middle" fill="var(--ink)" font-size="11" font-family="Outfit, sans-serif" font-weight="700">{{e.label}}</text>
+            </g>
+          </sc-for>
+        </svg>
+      </div>
+      <div class="col" style="flex:0.8; display:flex; flex-direction:column; gap:14px;">
+        <div class="legend" style="margin-bottom:0;">
+          <div class="legend-chip"><span class="legend-swatch" style="background:var(--black);"></span>Alto desempeño</div>
+          <div class="legend-chip"><span class="legend-swatch" style="background:var(--sred);"></span>Foco de atención</div>
+          <div class="legend-chip"><span class="legend-swatch" style="background:var(--peach);"></span>Resto de la fuerza</div>
+        </div>
+        <div class="panel pop-el" style="animation-delay:120ms;">
+          <div class="panel-title"><span>Ejecutivo seleccionado</span><span class="tag">{{execSelTag}}</span></div>
+          <div style="font:800 30px/1 var(--font-head); letter-spacing:-0.03em; color:var(--ink);">{{execSelName}}</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px 18px; margin-top:16px;">
+            <div><div class="stat-pill-label">Volumen</div><div style="font:800 20px/1.1 var(--font-head); color:var(--accent); margin-top:4px;">{{execSelVol}} <span style="font-size:12px; color:var(--ink-2);">UF</span></div></div>
+            <div><div class="stat-pill-label">Operaciones</div><div style="font:800 20px/1.1 var(--font-head); color:var(--ink); margin-top:4px;">{{execSelOps}}</div></div>
+            <div><div class="stat-pill-label">Mora 30+</div><div style="font:800 20px/1.1 var(--font-head); color:var(--ink); margin-top:4px;">{{execSelMora}}</div></div>
+            <div><div class="stat-pill-label">NPS</div><div style="font:800 20px/1.1 var(--font-head); color:var(--ink); margin-top:4px;">{{execSelNps}} <span style="font-size:12px; color:var(--ink-2);">/ 10</span></div></div>
+          </div>
+        </div>
+        <div class="panel-title" style="margin:6px 0 0 0;">Top 3 por volumen</div>
+        <div class="bar-list" style="gap:8px;">
+          <sc-for list="{{execTop}}" as="e" hint-placeholder-count="3">
+            <div class="bar-row compact" onClick="{{e.sel}}" style="cursor:pointer;">
+              <div class="bar-name">{{e.label}}</div>
+              <div class="bar-track" style="height:16px;"><div class="bar-fill" style="width:{{e.pct}}%; background:var(--black); animation-delay:{{e.delay}}ms;"></div></div>
+              <div class="bar-meta"><b>{{e.valueStr}}</b> UF <span style="color:var(--muted);">· mora {{e.moraStr}}</span></div>
+            </div>
+          </sc-for>
+        </div>
+        <div class="source-note" style="margin-top:4px;">Los tres combinan alto volumen con mora bajo el promedio de cartera (16,2%): su método es replicable, no un golpe de suerte.</div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- ============ 9 · P6 COSECHAS ============ -->
+  <sc-if value="{{s9}}" hint-placeholder-val="{{false}}">
+  <section class="slide" data-key="s9">
+    <div class="slide-head px">
+      <div class="q-script fade-el">¿Las cosechas 2026 son mejores?</div>
+      <h2 class="h2 fade-el" style="animation-delay:80ms;">Todavía no lo sabemos: les falta historia. Es <span class="hl">seasoning</span>, no calidad.</h2>
+    </div>
+    <div class="col" style="flex:1; display:flex; flex-direction:column;">
+      <div class="panel" style="display:flex; flex-direction:column;">
+        <div class="panel-title">Mora 30+ por cosecha (Año-Mes)<span class="tag">más oscuro = mayor mora · pasa el cursor</span></div>
+        <div style="height:160px; display:flex; align-items:flex-end; gap:5px;">
+          <sc-for list="{{cohortCols}}" as="c" hint-placeholder-count="22">
+            <div class="colw">
+              <span class="tip">{{c.tipStr}}</span>
+              <div class="col-track"><div class="col-fill" style="height:{{c.pct}}%; background:{{c.color}}; animation-delay:{{c.delay}}ms;"></div></div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex; gap:5px; margin-top:6px;">
+          <sc-for list="{{cohortCols}}" as="c" hint-placeholder-count="22">
+            <div style="flex:1; text-align:center;"><span style="font:600 9.5px var(--font-head); color:var(--muted);">{{c.tick}}</span></div>
+          </sc-for>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:20px;">
+        <div class="callout-label">Lectura</div>
+        <div class="callout-text">Las cosechas de 2025 muestran mora de hasta <b>25%</b> con 12+ meses de historia; las de 2026 aún están "verdes". Comparar cosechas exige igualar la ventana de maduración, no solo el calendario.</div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- ============ 10 · P7 SENSIBILIDAD (rojo profundo) ============ -->
+  <sc-if value="{{s10}}" hint-placeholder-val="{{false}}">
+  <section class="slide" data-key="s10">
+    <div class="slide-head px">
+      <div class="q-script fade-el">¿Y si la tasa sube 2 puntos?</div>
+      <h2 class="h2 fade-el" style="animation-delay:80ms;">El shock no es simétrico: la proporción de clientes con DTI comprometido pasa de un tercio a <span class="hl">casi 60%</span>.</h2>
+      <p class="lead fade-el" style="animation-delay:140ms;">Un shock simulado de +2pp sobre la tasa vigente — simple, ilustrativo, no una metodología regulatoria.</p>
+    </div>
+    <div class="row" style="flex:1;">
+      <div class="col" style="flex:1.1;">
+        <div class="panel-title">Antes → después del shock<span class="tag">promedios de cartera</span></div>
+        <svg viewBox="0 0 600 220" style="width:100%; height:auto; max-height:230px; display:block;">
+          <sc-for list="{{dumbbells}}" as="d" hint-placeholder-count="3">
+            <g>
+              <text x="0" y="{{d.y}}" dy="-14" fill="var(--ink-2)" font-size="13" font-family="Outfit, sans-serif" font-weight="700">{{d.label}}</text>
+              <line x1="{{d.x1}}" y1="{{d.y}}" x2="{{d.x2}}" y2="{{d.y}}" stroke="rgba(255,255,255,0.55)" stroke-width="3" stroke-linecap="round"></line>
+              <circle cx="{{d.x1}}" cy="{{d.y}}" r="8" fill="var(--soft)"></circle>
+              <circle cx="{{d.x2}}" cy="{{d.y}}" r="9" fill="#fff"></circle>
+              <text x="{{d.x1}}" y="{{d.y}}" dy="26" text-anchor="middle" fill="var(--soft)" font-size="12" font-family="Outfit, sans-serif" font-weight="600">{{d.v1}}</text>
+              <text x="{{d.x2}}" y="{{d.y}}" dy="26" text-anchor="middle" fill="#fff" font-size="12.5" font-family="Outfit, sans-serif" font-weight="800">{{d.v2}}</text>
+            </g>
+          </sc-for>
+        </svg>
+        <div class="legend">
+          <div class="legend-chip"><span class="legend-swatch" style="background:var(--soft);"></span>Escenario actual</div>
+          <div class="legend-chip"><span class="legend-swatch" style="background:#fff;"></span>Escenario +2pp</div>
+        </div>
+      </div>
+      <div class="col" style="flex:0.9; display:flex; flex-direction:column; gap:16px;">
+        <div class="stat-pill pop-el" style="animation-delay:160ms;">
+          <div class="stat-pill-label">Clientes con DTI alto (&gt;40%)</div>
+          <div class="shock-num" style="margin-top:8px;"><span class="from">{{dtiAltoActual}}%</span><span class="arr">→</span><span>{{dtiAltoStress}}%</span></div>
+          <div class="stat-pill-sub">22 puntos más de cartera quedaría con holgura ajustada</div>
+        </div>
+        <div class="stat-pill pop-el" style="animation-delay:240ms;">
+          <div class="stat-pill-label">Dividendo promedio</div>
+          <div class="stat-pill-value big" style="color:#fff;">+{{divDelta}}%</div>
+          <div class="stat-pill-sub">{{divActual}} UF → {{divStress}} UF por crédito, en promedio</div>
+        </div>
+        <div class="callout" style="margin-top:0;">
+          <div class="callout-label">Lectura</div>
+          <div class="callout-text">La tasa sube 42% y el dividendo 19%, pero el grupo con DTI comprometido pasa de <b>36,6% a 58,8%</b>. Es el segmento a vigilar antes de cualquier repricing.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- ============ 11 · CONCLUSIONES (noche) ============ -->
+  <sc-if value="{{s11}}" hint-placeholder-val="{{false}}">
+  <section class="slide" data-key="s11">
+    <div class="slide-head px">
+      <div class="q-script fade-el">¿Y ahora qué?</div>
+      <h2 class="h2 fade-el" style="animation-delay:80ms;">Siete preguntas, siete respuestas con datos — y <span class="hl">tres decisiones</span>.</h2>
+    </div>
+    <div class="row" style="flex:1; align-items:stretch;">
+      <div class="col" style="flex:1;">
+        <div class="bar-list" style="gap:7px;">
+          <sc-for list="{{conclusions}}" as="k" hint-placeholder-count="7">
+            <div class="ccard fade-el" style="animation-delay:{{k.delay}}ms;" onClick="{{k.go}}">
+              <div class="n">{{k.n}}</div>
+              <div class="t"><b>{{k.title}}</b> — {{k.text}}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div class="col" style="flex:0.66; display:flex; flex-direction:column; gap:14px;">
+        <div class="reco pop-el" style="animation-delay:200ms;">
+          <div class="callout-label">Decisión 1</div>
+          <div class="callout-text"><b>Recalibrar el modelo de score</b>: hoy no separa correctamente la mora real por tramo.</div>
+        </div>
+        <div class="reco pop-el" style="animation-delay:280ms;">
+          <div class="callout-label">Decisión 2</div>
+          <div class="callout-text"><b>Escalar el canal Referido</b> y replicar el método de los ejecutivos top — mismo costo, mejor calidad.</div>
+        </div>
+        <div class="reco pop-el" style="animation-delay:360ms;">
+          <div class="callout-label">Decisión 3</div>
+          <div class="callout-text"><b>Simular repricing con foco en el DTI</b>, no solo en la tasa: ahí se concentra el riesgo del shock.</div>
+        </div>
+        <div class="source-note" style="margin-top:auto;">Caso académico — datos sintéticos. Elaborado para fines de analítica y storytelling de datos; no usar para decisiones financieras reales ni atribuir a Banco Santander.</div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <div class="wipe"></div>
+
+  <div class="navbar">
+    <button class="nav-btn" onClick="{{goPrevFn}}" aria-label="Lámina anterior" style="opacity:{{navPrevOpacity}}">
+      <svg class="ico" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg> Anterior
+    </button>
+    <div class="dots">
+      <sc-for list="{{dots}}" as="d" hint-placeholder-count="12">
+        <button class="dot{{d.activeSuffix}}" onClick="{{d.go}}" aria-label="{{d.title}}"></button>
+      </sc-for>
+    </div>
+    <button class="nav-btn primary" onClick="{{goNextFn}}" aria-label="Lámina siguiente" style="opacity:{{navNextOpacity}}">
+      {{nextLabel}} <svg class="ico" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+</div>
+</script>
+<script src="assets/deck.js"></script>
+</body>
+</html>
