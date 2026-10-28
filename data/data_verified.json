@@ -1,0 +1,959 @@
+{
+"kpis": {
+"operaciones": 1850,
+"volumen_uf": 16646637,
+"ticket_uf": 8998.2,
+"tasa": 4.77,
+"ltv": 77.5,
+"dti": 36.8,
+"mora30": 16.2,
+"nps_promotores": 42.4,
+"nps_neto": 21.5,
+"cac": 18.16,
+"margen": 0.75,
+"satisfaccion": 4.52,
+"edad_prom": 47.8,
+"satisf_nuevo": 4.52,
+"satisf_recurrente": 4.51
+},
+"canales": [
+{
+"canal": "Sucursal",
+"operaciones": 546,
+"volumen_uf": 5024962,
+"mora30": 17.0,
+"cac": 17.63,
+"margen": 0.74,
+"solicitudes": 685,
+"conversion": 79.7,
+"costo_lead": 7.07,
+"dias_decision": 20.8
+},
+{
+"canal": "Web",
+"operaciones": 373,
+"volumen_uf": 3404270,
+"mora30": 17.2,
+"cac": 17.72,
+"margen": 0.77,
+"solicitudes": 504,
+"conversion": 74.0,
+"costo_lead": 7.09,
+"dias_decision": 21.81
+},
+{
+"canal": "App móvil",
+"operaciones": 244,
+"volumen_uf": 2136505,
+"mora30": 16.4,
+"cac": 17.76,
+"margen": 0.75,
+"solicitudes": 362,
+"conversion": 67.4,
+"costo_lead": 6.88,
+"dias_decision": 21.68
+},
+{
+"canal": "Corredora inmobiliaria",
+"operaciones": 236,
+"volumen_uf": 2128883,
+"mora30": 16.5,
+"cac": 22.84,
+"margen": 0.77,
+"solicitudes": 379,
+"conversion": 62.3,
+"costo_lead": 8.11,
+"dias_decision": 22.33
+},
+{
+"canal": "Alianza empresa",
+"operaciones": 166,
+"volumen_uf": 1539814,
+"mora30": 14.5,
+"cac": 17.31,
+"margen": 0.72,
+"solicitudes": 302,
+"conversion": 55.0,
+"costo_lead": 6.9,
+"dias_decision": 22.54
+},
+{
+"canal": "Referido",
+"operaciones": 174,
+"volumen_uf": 1456074,
+"mora30": 13.8,
+"cac": 11.9,
+"margen": 0.76,
+"solicitudes": 313,
+"conversion": 55.6,
+"costo_lead": 5.33,
+"dias_decision": 22.25
+},
+{
+"canal": "Contact center",
+"operaciones": 111,
+"volumen_uf": 956129,
+"mora30": 13.5,
+"cac": 24.33,
+"margen": 0.74,
+"solicitudes": 255,
+"conversion": 43.5,
+"costo_lead": 7.98,
+"dias_decision": 24.43
+}
+],
+"funnel_stages": {
+"Cursado": 1850,
+"Desistida": 318,
+"Rechazada": 292,
+"En evaluación": 194,
+"Preaprobada": 146
+},
+"funnel_total": 2800,
+"funnel_conversion_global": 66.1,
+"motivos_no_conversion": {
+"Cambio de decisión": 87,
+"Oferta competencia": 86,
+"Historial crediticio": 85,
+"Tasa no competitiva": 77,
+"Propiedad no elegible": 70,
+"Capacidad de pago": 70,
+"Demora del proceso": 68,
+"Documentación incompleta": 67
+},
+"dias_hasta_decision_prom": 22.0,
+"costo_lead_prom": 7.06,
+"segmentos": [
+{
+"segmento": "Personas",
+"operaciones": 491,
+"volumen_uf": 4407939,
+"mora30": 13.8,
+"margen": 0.73,
+"ltv": 76.4,
+"dti": 37.68,
+"ticket": 8977.47,
+"share_volumen": 26.5
+},
+{
+"segmento": "Select",
+"operaciones": 432,
+"volumen_uf": 3716684,
+"mora30": 15.0,
+"margen": 0.75,
+"ltv": 77.29,
+"dti": 36.45,
+"ticket": 8603.44,
+"share_volumen": 22.3
+},
+{
+"segmento": "Universitario",
+"operaciones": 322,
+"volumen_uf": 2955340,
+"mora30": 18.3,
+"margen": 0.78,
+"ltv": 78.84,
+"dti": 36.81,
+"ticket": 9178.07,
+"share_volumen": 17.8
+},
+{
+"segmento": "Private Banking",
+"operaciones": 309,
+"volumen_uf": 2849258,
+"mora30": 18.1,
+"margen": 0.74,
+"ltv": 78.72,
+"dti": 37.04,
+"ticket": 9220.9,
+"share_volumen": 17.1
+},
+{
+"segmento": "Pyme",
+"operaciones": 296,
+"volumen_uf": 2717416,
+"mora30": 17.2,
+"margen": 0.76,
+"ltv": 76.66,
+"dti": 35.52,
+"ticket": 9180.46,
+"share_volumen": 16.3
+}
+],
+"mensual": [
+{
+"mes": "2025-01",
+"operaciones": 120,
+"volumen_uf": 1120040,
+"mora30": 17.5,
+"nps": 7.84,
+"satisf": 4.47,
+"margen": 0.78
+},
+{
+"mes": "2025-02",
+"operaciones": 118,
+"volumen_uf": 1129724,
+"mora30": 21.2,
+"nps": 7.86,
+"satisf": 4.53,
+"margen": 0.78
+},
+{
+"mes": "2025-03",
+"operaciones": 112,
+"volumen_uf": 1006717,
+"mora30": 25.0,
+"nps": 7.68,
+"satisf": 4.47,
+"margen": 0.78
+},
+{
+"mes": "2025-04",
+"operaciones": 131,
+"volumen_uf": 1263972,
+"mora30": 13.0,
+"nps": 7.89,
+"satisf": 4.47,
+"margen": 0.77
+},
+{
+"mes": "2025-05",
+"operaciones": 147,
+"volumen_uf": 1367081,
+"mora30": 19.0,
+"nps": 8.01,
+"satisf": 4.61,
+"margen": 0.79
+},
+{
+"mes": "2025-06",
+"operaciones": 144,
+"volumen_uf": 1322273,
+"mora30": 16.0,
+"nps": 7.83,
+"satisf": 4.48,
+"margen": 0.69
+},
+{
+"mes": "2025-07",
+"operaciones": 144,
+"volumen_uf": 1461575,
+"mora30": 21.5,
+"nps": 7.98,
+"satisf": 4.52,
+"margen": 0.73
+},
+{
+"mes": "2025-08",
+"operaciones": 153,
+"volumen_uf": 1298263,
+"mora30": 15.0,
+"nps": 7.93,
+"satisf": 4.52,
+"margen": 0.77
+},
+{
+"mes": "2025-09",
+"operaciones": 133,
+"volumen_uf": 1217925,
+"mora30": 15.0,
+"nps": 7.8,
+"satisf": 4.45,
+"margen": 0.75
+},
+{
+"mes": "2025-10",
+"operaciones": 114,
+"volumen_uf": 1076753,
+"mora30": 20.2,
+"nps": 7.6,
+"satisf": 4.37,
+"margen": 0.72
+},
+{
+"mes": "2025-11",
+"operaciones": 125,
+"volumen_uf": 1153745,
+"mora30": 19.2,
+"nps": 7.91,
+"satisf": 4.55,
+"margen": 0.76
+},
+{
+"mes": "2025-12",
+"operaciones": 120,
+"volumen_uf": 1087804,
+"mora30": 17.5,
+"nps": 8.06,
+"satisf": 4.57,
+"margen": 0.72
+},
+{
+"mes": "2026-01",
+"operaciones": 23,
+"volumen_uf": 143205,
+"mora30": 4.3,
+"nps": 8.39,
+"satisf": 4.7,
+"margen": 0.7
+},
+{
+"mes": "2026-02",
+"operaciones": 29,
+"volumen_uf": 218617,
+"mora30": 13.8,
+"nps": 7.97,
+"satisf": 4.55,
+"margen": 0.69
+},
+{
+"mes": "2026-03",
+"operaciones": 29,
+"volumen_uf": 216704,
+"mora30": 6.9,
+"nps": 7.62,
+"satisf": 4.41,
+"margen": 0.64
+},
+{
+"mes": "2026-04",
+"operaciones": 27,
+"volumen_uf": 231452,
+"mora30": 0.0,
+"nps": 8.56,
+"satisf": 4.78,
+"margen": 0.92
+},
+{
+"mes": "2026-05",
+"operaciones": 31,
+"volumen_uf": 242375,
+"mora30": 3.2,
+"nps": 8.61,
+"satisf": 4.74,
+"margen": 0.7
+},
+{
+"mes": "2026-06",
+"operaciones": 25,
+"volumen_uf": 154525,
+"mora30": 4.0,
+"nps": 8.24,
+"satisf": 4.64,
+"margen": 0.77
+},
+{
+"mes": "2026-07",
+"operaciones": 37,
+"volumen_uf": 229213,
+"mora30": 8.1,
+"nps": 7.62,
+"satisf": 4.32,
+"margen": 0.83
+},
+{
+"mes": "2026-08",
+"operaciones": 33,
+"volumen_uf": 251942,
+"mora30": 3.0,
+"nps": 8.18,
+"satisf": 4.55,
+"margen": 0.72
+},
+{
+"mes": "2026-09",
+"operaciones": 29,
+"volumen_uf": 236225,
+"mora30": 6.9,
+"nps": 8.03,
+"satisf": 4.55,
+"margen": 0.63
+},
+{
+"mes": "2026-10",
+"operaciones": 26,
+"volumen_uf": 216507,
+"mora30": 0.0,
+"nps": 8.38,
+"satisf": 4.73,
+"margen": 0.84
+}
+],
+"regiones": [
+{
+"region": "RM",
+"operaciones": 551,
+"volumen_uf": 4801205,
+"mora30": 15.2,
+"nps": 8.0,
+"satisf": 4.55,
+"ltv": 77.39,
+"dti": 36.27,
+"tasa": 4.75
+},
+{
+"region": "Valparaíso",
+"operaciones": 193,
+"volumen_uf": 1819952,
+"mora30": 17.1,
+"nps": 7.98,
+"satisf": 4.54,
+"ltv": 77.82,
+"dti": 36.58,
+"tasa": 4.8
+},
+{
+"region": "Biobío",
+"operaciones": 166,
+"volumen_uf": 1470760,
+"mora30": 13.3,
+"nps": 7.64,
+"satisf": 4.43,
+"ltv": 76.93,
+"dti": 36.75,
+"tasa": 4.76
+},
+{
+"region": "Los Lagos",
+"operaciones": 107,
+"volumen_uf": 1015978,
+"mora30": 16.8,
+"nps": 7.82,
+"satisf": 4.49,
+"ltv": 75.7,
+"dti": 37.83,
+"tasa": 4.77
+},
+{
+"region": "Coquimbo",
+"operaciones": 111,
+"volumen_uf": 939977,
+"mora30": 16.2,
+"nps": 8.12,
+"satisf": 4.62,
+"ltv": 77.34,
+"dti": 34.18,
+"tasa": 4.8
+},
+{
+"region": "Antofagasta",
+"operaciones": 107,
+"volumen_uf": 911256,
+"mora30": 18.7,
+"nps": 8.14,
+"satisf": 4.59,
+"ltv": 77.34,
+"dti": 38.39,
+"tasa": 4.77
+},
+{
+"region": "Araucanía",
+"operaciones": 90,
+"volumen_uf": 845322,
+"mora30": 17.8,
+"nps": 8.02,
+"satisf": 4.5,
+"ltv": 75.56,
+"dti": 37.75,
+"tasa": 4.7
+},
+{
+"region": "Los Ríos",
+"operaciones": 82,
+"volumen_uf": 793580,
+"mora30": 17.1,
+"nps": 7.91,
+"satisf": 4.54,
+"ltv": 77.8,
+"dti": 39.86,
+"tasa": 4.83
+},
+{
+"region": "Maule",
+"operaciones": 84,
+"volumen_uf": 760102,
+"mora30": 13.1,
+"nps": 7.7,
+"satisf": 4.43,
+"ltv": 78.81,
+"dti": 37.36,
+"tasa": 4.75
+},
+{
+"region": "O'Higgins",
+"operaciones": 80,
+"volumen_uf": 749394,
+"mora30": 20.0,
+"nps": 8.0,
+"satisf": 4.5,
+"ltv": 76.31,
+"dti": 36.47,
+"tasa": 4.78
+},
+{
+"region": "Tarapacá",
+"operaciones": 80,
+"volumen_uf": 747636,
+"mora30": 18.8,
+"nps": 7.46,
+"satisf": 4.38,
+"ltv": 80.19,
+"dti": 37.92,
+"tasa": 4.81
+},
+{
+"region": "Arica y Parinacota",
+"operaciones": 67,
+"volumen_uf": 618892,
+"mora30": 16.4,
+"nps": 8.04,
+"satisf": 4.57,
+"ltv": 78.66,
+"dti": 33.19,
+"tasa": 4.8
+},
+{
+"region": "Atacama",
+"operaciones": 63,
+"volumen_uf": 578257,
+"mora30": 17.5,
+"nps": 7.7,
+"satisf": 4.43,
+"ltv": 78.57,
+"dti": 37.06,
+"tasa": 4.72
+},
+{
+"region": "Ñuble",
+"operaciones": 62,
+"volumen_uf": 534350,
+"mora30": 14.5,
+"nps": 7.74,
+"satisf": 4.44,
+"ltv": 78.23,
+"dti": 37.39,
+"tasa": 4.73
+},
+{
+"region": "Magallanes",
+"operaciones": 4,
+"volumen_uf": 41968,
+"mora30": 0.0,
+"nps": 9.0,
+"satisf": 5.0,
+"ltv": 78.75,
+"dti": 56.29,
+"tasa": 4.82
+},
+{
+"region": "Aysén",
+"operaciones": 3,
+"volumen_uf": 18008,
+"mora30": 33.3,
+"nps": 7.0,
+"satisf": 4.0,
+"ltv": 68.33,
+"dti": 34.19,
+"tasa": 4.2
+}
+],
+"tipo_vivienda": [
+{
+"tipo_vivienda": "Departamento usado",
+"operaciones": 489,
+"volumen_uf": 4457095,
+"ltv": 77.26,
+"dti": 36.96,
+"tasa": 4.76,
+"mora30": 15.5
+},
+{
+"tipo_vivienda": "Departamento nuevo",
+"operaciones": 462,
+"volumen_uf": 4216266,
+"ltv": 77.41,
+"dti": 36.62,
+"tasa": 4.76,
+"mora30": 17.3
+},
+{
+"tipo_vivienda": "Casa nueva",
+"operaciones": 448,
+"volumen_uf": 4143297,
+"ltv": 78.05,
+"dti": 37.19,
+"tasa": 4.77,
+"mora30": 17.2
+},
+{
+"tipo_vivienda": "Casa usada",
+"operaciones": 451,
+"volumen_uf": 3829979,
+"ltv": 77.14,
+"dti": 36.38,
+"tasa": 4.78,
+"mora30": 14.6
+}
+],
+"ejecutivos": [
+{
+"ejecutivo": "A. Rojas",
+"operaciones": 153,
+"volumen_uf": 1363048,
+"mora30": 15.0,
+"margen": 0.72,
+"nps": 7.95
+},
+{
+"ejecutivo": "G. Herrera",
+"operaciones": 142,
+"volumen_uf": 1221305,
+"mora30": 12.7,
+"margen": 0.7,
+"nps": 7.95
+},
+{
+"ejecutivo": "L. Muñoz",
+"operaciones": 138,
+"volumen_uf": 1206798,
+"mora30": 13.8,
+"margen": 0.76,
+"nps": 8.16
+},
+{
+"ejecutivo": "T. Núñez",
+"operaciones": 134,
+"volumen_uf": 1164058,
+"mora30": 10.4,
+"margen": 0.74,
+"nps": 8.1
+},
+{
+"ejecutivo": "E. Castro",
+"operaciones": 125,
+"volumen_uf": 1112760,
+"mora30": 17.6,
+"margen": 0.73,
+"nps": 7.6
+},
+{
+"ejecutivo": "C. Tapia",
+"operaciones": 117,
+"volumen_uf": 945084,
+"mora30": 14.5,
+"margen": 0.77,
+"nps": 7.79
+},
+{
+"ejecutivo": "V. Morales",
+"operaciones": 84,
+"volumen_uf": 895997,
+"mora30": 26.2,
+"margen": 0.76,
+"nps": 7.94
+},
+{
+"ejecutivo": "N. Fuentes",
+"operaciones": 87,
+"volumen_uf": 868440,
+"mora30": 21.8,
+"margen": 0.66,
+"nps": 7.89
+},
+{
+"ejecutivo": "P. Vega",
+"operaciones": 80,
+"volumen_uf": 857209,
+"mora30": 23.8,
+"margen": 0.74,
+"nps": 7.7
+},
+{
+"ejecutivo": "S. Bravo",
+"operaciones": 81,
+"volumen_uf": 827381,
+"mora30": 16.0,
+"margen": 0.8,
+"nps": 7.7
+},
+{
+"ejecutivo": "B. Reyes",
+"operaciones": 78,
+"volumen_uf": 792228,
+"mora30": 23.1,
+"margen": 0.84,
+"nps": 7.56
+},
+{
+"ejecutivo": "J. Cáceres",
+"operaciones": 74,
+"volumen_uf": 748512,
+"mora30": 25.7,
+"margen": 0.73,
+"nps": 7.72
+},
+{
+"ejecutivo": "D. Araya",
+"operaciones": 75,
+"volumen_uf": 698283,
+"mora30": 14.7,
+"margen": 0.7,
+"nps": 7.95
+},
+{
+"ejecutivo": "F. Soto",
+"operaciones": 71,
+"volumen_uf": 685590,
+"mora30": 23.9,
+"margen": 0.78,
+"nps": 7.59
+},
+{
+"ejecutivo": "M. Silva",
+"operaciones": 71,
+"volumen_uf": 681843,
+"mora30": 25.4,
+"margen": 0.73,
+"nps": 7.79
+},
+{
+"ejecutivo": "R. Pinto",
+"operaciones": 68,
+"volumen_uf": 658464,
+"mora30": 25.0,
+"margen": 0.78,
+"nps": 7.72
+},
+{
+"ejecutivo": "P. Vidal",
+"operaciones": 76,
+"volumen_uf": 520317,
+"mora30": 7.9,
+"margen": 0.81,
+"nps": 8.11
+},
+{
+"ejecutivo": "F. Silva",
+"operaciones": 68,
+"volumen_uf": 509834,
+"mora30": 1.5,
+"margen": 0.82,
+"nps": 8.43
+},
+{
+"ejecutivo": "M. Soto",
+"operaciones": 64,
+"volumen_uf": 462213,
+"mora30": 7.8,
+"margen": 0.77,
+"nps": 8.28
+},
+{
+"ejecutivo": "R. Leiva",
+"operaciones": 64,
+"volumen_uf": 427273,
+"mora30": 1.6,
+"margen": 0.78,
+"nps": 8.38
+}
+],
+"cohortes": [
+{
+"cohorte": "2025-01",
+"operaciones": 120,
+"mora30": 17.5,
+"mora_dias": 26.6
+},
+{
+"cohorte": "2025-02",
+"operaciones": 118,
+"mora30": 21.2,
+"mora_dias": 29.0
+},
+{
+"cohorte": "2025-03",
+"operaciones": 112,
+"mora30": 25.0,
+"mora_dias": 41.2
+},
+{
+"cohorte": "2025-04",
+"operaciones": 131,
+"mora30": 13.0,
+"mora_dias": 20.4
+},
+{
+"cohorte": "2025-05",
+"operaciones": 147,
+"mora30": 19.0,
+"mora_dias": 30.7
+},
+{
+"cohorte": "2025-06",
+"operaciones": 144,
+"mora30": 16.0,
+"mora_dias": 24.9
+},
+{
+"cohorte": "2025-07",
+"operaciones": 144,
+"mora30": 21.5,
+"mora_dias": 32.4
+},
+{
+"cohorte": "2025-08",
+"operaciones": 153,
+"mora30": 15.0,
+"mora_dias": 22.6
+},
+{
+"cohorte": "2025-09",
+"operaciones": 133,
+"mora30": 15.0,
+"mora_dias": 17.6
+},
+{
+"cohorte": "2025-10",
+"operaciones": 114,
+"mora30": 20.2,
+"mora_dias": 38.1
+},
+{
+"cohorte": "2025-11",
+"operaciones": 125,
+"mora30": 19.2,
+"mora_dias": 23.3
+},
+{
+"cohorte": "2025-12",
+"operaciones": 120,
+"mora30": 17.5,
+"mora_dias": 21.0
+},
+{
+"cohorte": "2026-01",
+"operaciones": 23,
+"mora30": 4.3,
+"mora_dias": 1.5
+},
+{
+"cohorte": "2026-02",
+"operaciones": 29,
+"mora30": 13.8,
+"mora_dias": 7.5
+},
+{
+"cohorte": "2026-03",
+"operaciones": 29,
+"mora30": 6.9,
+"mora_dias": 2.8
+},
+{
+"cohorte": "2026-04",
+"operaciones": 27,
+"mora30": 0.0,
+"mora_dias": 0.0
+},
+{
+"cohorte": "2026-05",
+"operaciones": 31,
+"mora30": 3.2,
+"mora_dias": 10.8
+},
+{
+"cohorte": "2026-06",
+"operaciones": 25,
+"mora30": 4.0,
+"mora_dias": 2.3
+},
+{
+"cohorte": "2026-07",
+"operaciones": 37,
+"mora30": 8.1,
+"mora_dias": 9.3
+},
+{
+"cohorte": "2026-08",
+"operaciones": 33,
+"mora30": 3.0,
+"mora_dias": 1.6
+},
+{
+"cohorte": "2026-09",
+"operaciones": 29,
+"mora30": 6.9,
+"mora_dias": 10.1
+},
+{
+"cohorte": "2026-10",
+"operaciones": 26,
+"mora30": 0.0,
+"mora_dias": 0.0
+}
+],
+"stress": {
+"tasa_prom": 4.77,
+"tasa_stress_prom": 6.77,
+"dividendo_prom": 47.5,
+"dividendo_stress_prom": 56.7,
+"dividendo_delta_pct": 19.2,
+"dti_prom": 36.8,
+"dti_stress_prom": 43.9,
+"alto_dti_actual_pct": 36.6,
+"alto_dti_stress_pct": 58.8
+},
+"clasificacion_riesgo": [
+{
+"clasificacion": "Alto",
+"operaciones": 433,
+"volumen_uf": 4348167,
+"margen": 0.75,
+"mora30": 12.5
+},
+{
+"clasificacion": "Bajo",
+"operaciones": 539,
+"volumen_uf": 4412008,
+"margen": 0.75,
+"mora30": 16.9
+},
+{
+"clasificacion": "Medio",
+"operaciones": 878,
+"volumen_uf": 7886462,
+"margen": 0.75,
+"mora30": 17.5
+}
+],
+"nps_canal": [
+{
+"canal": "Alianza empresa",
+"nps": 8.13
+},
+{
+"canal": "App móvil",
+"nps": 7.78
+},
+{
+"canal": "Contact center",
+"nps": 7.95
+},
+{
+"canal": "Corredora inmobiliaria",
+"nps": 7.95
+},
+{
+"canal": "Referido",
+"nps": 7.95
+},
+{
+"canal": "Sucursal",
+"nps": 7.87
+},
+{
+"canal": "Web",
+"nps": 7.91
+}
+]
+}
