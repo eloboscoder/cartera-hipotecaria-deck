@@ -376,8 +376,8 @@ table.dtable tbody tr:hover{background:var(--pill-bg-2);}
 .donut .arc{ fill:none; transition:opacity .3s, stroke-width .3s; animation:arcIn 1200ms var(--ease) both; cursor:pointer; }
 .donut .arc.dim{ opacity:.22; }
 .donut .arc.lit{ stroke-width:34; }
-.donut .dc-big{ font:400 38px var(--font-cond); fill:var(--ink); }
-.donut .dc-sm{ font:700 10px var(--font-head); fill:var(--muted); letter-spacing:.08em; text-transform:uppercase; }
+.donut .dc-big{ font:400 36px var(--font-cond); fill:var(--ink); }
+.donut .dc-sm{ font:700 8.5px var(--font-head); fill:var(--muted); letter-spacing:.05em; text-transform:uppercase; }
 .legend-chip.fh{ cursor:pointer; transition:background .25s, transform .25s var(--ease); }
 .legend-chip.fh.lit{ background:var(--pill-bg); color:var(--pill-ink); transform:translateX(3px); }
 .legend.vert{ flex-direction:column; gap:7px; margin:0; }
@@ -451,6 +451,12 @@ table.dtable.compact th{ padding-bottom:7px; }
 .reco{ box-shadow:0 10px 30px rgba(0,0,0,.18); transition:box-shadow .3s; }
 .reco:hover{ box-shadow:0 26px 50px rgba(0,0,0,.32); }
 .reco-wrap{ perspective:1100px; display:flex; flex-direction:column; gap:14px; }
+
+/* ---------- Fill the stage: lists spread over the available height ---------- */
+.row[style*="flex:1"] > .col{ display:flex; flex-direction:column; }
+.row[style*="flex:1"] > .col > .bar-list{ flex:1 1 auto; justify-content:space-evenly; }
+.row[style*="flex:1"] > .col > .bar-list > .bar-row{ padding:7px 8px; }
+.row[style*="flex:1"] > .col > .bar-list > .ccard{ padding:12px 14px; }
 
 /* small-screen guards */
 @media (max-width: 900px){
